@@ -32,11 +32,11 @@ def check_order_error(given_list, press_list):
 	return order_error
 
 def analyze_trial(given_list, press_list):
-	correct = False				# 1 = user_list is correct; 0 = incorrect
-	order_error = False		# 1 = atleast one element in user_list is in the wrong order
-	hits = 0				# element in user_list is in given_list and is not excessive
-	substitutions = 0	# element in user_list is not in given_list or is excessive
-	additions = 0		# excessive elements in user_list; user_list > given_list
+	correct = False				
+	order_error = False		
+	hits = 0				
+	substitutions = 0	
+	additions = 0		
 	trial_data = ({})
 	intersection_list = list(set(press_list) & set(given_list))
 
