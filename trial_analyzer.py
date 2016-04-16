@@ -49,13 +49,6 @@ def analyze_trial(given_list, press_list):
 			additions = check_additions(given_list, press_list)
 			substitutions = len(press_list) - hits - additions
 			order_error = check_order_error(given_list, press_list)
-	# print ("intersection: " + str(intersection_list))
-	# print ("correct: " + str(correct))
-	# print ("hits: " + str(hits))
-	# print ("additions: " + str(additions))
-	# print ("substitutions: " + str(substitutions))
-	# print ("OE: " + str(order_error))
 
 	trial_data = ({"correct": correct, "hits": hits, "substitutions": substitutions, "additions": additions, "order error": order_error})
 	return trial_data
-			#within trial:  correct (0,1), # hit, # substitions, # additions, order error (1,0), # balls given (1,2,3,4)
