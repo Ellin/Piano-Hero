@@ -94,5 +94,26 @@ class AnalysisTest(unittest.TestCase):
 		results = analysis.analyze_trial(given_list, press_list)
 		self.assertEqual(results, ({"correct": False, "hits": 3, "substitutions": 0, "additions": 1, "order error": False}))
 
+	def test_correct14(self):
+		given_list = [1, 2, 3]
+		press_list = [3, 2, 1]
+
+		results = analysis.analyze_trial(given_list, press_list)
+		self.assertEqual(results, ({"correct": False, "hits": 3, "substitutions": 0, "additions": 0, "order error": True}))
+
+	def test_correct15(self):
+		given_list = [1, 2, 3]
+		press_list = [1, 3, 1, 2]
+
+		results = analysis.analyze_trial(given_list, press_list)
+		self.assertEqual(results, ({"correct": False, "hits": 3, "substitutions": 0, "additions": 1, "order error": True}))
+
+	def test_correct16(self):
+		given_list = [1, 2, 3]
+		press_list = [3, 1]
+
+		results = analysis.analyze_trial(given_list, press_list)
+		self.assertEqual(results, ({"correct": False, "hits": 2, "substitutions": 0, "additions": 0, "order error": True}))
+		
 if __name__ == '__main__':
 	unittest.main()

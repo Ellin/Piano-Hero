@@ -16,7 +16,8 @@ def check_additions(given_list, press_list):
 def check_order_error(given_list, press_list):
 	# intersections of press_list & given_list, but unlike set(), keeps duplicate elements & also preserves order
 	given_list_mod = [x for x in given_list if x in press_list]
-	press_list_mod = [x for x in press_list if x in given_list_mod]		
+	press_list_mod = [x for x in press_list if x in given_list_mod]
+	order_error = False		
 	order_hits = 0
 	j = 0
 	for i in range(len(press_list_mod)):
@@ -27,6 +28,8 @@ def check_order_error(given_list, press_list):
 
 	if order_hits < len(given_list_mod):
 		order_error = True
+
+	return order_error
 
 def analyze_trial(given_list, press_list):
 	correct = False				# 1 = user_list is correct; 0 = incorrect
@@ -45,7 +48,7 @@ def analyze_trial(given_list, press_list):
 			hits = len(intersection_list)	# hits = length of list of intersection of press_list & given_list
 			additions = check_additions(given_list, press_list)
 			substitutions = len(press_list) - hits - additions
-			check_order_error(given_list, press_list)
+			order_error = check_order_error(given_list, press_list)
 	# print ("intersection: " + str(intersection_list))
 	# print ("correct: " + str(correct))
 	# print ("hits: " + str(hits))
