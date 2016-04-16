@@ -17,13 +17,6 @@ def check_order_error(given_list, press_list):
 	# intersections of press_list & given_list, but unlike set(), keeps duplicate elements & also preserves order
 	given_list_mod = [x for x in given_list if x in press_list]
 	press_list_mod = [x for x in press_list if x in given_list_mod]		
-	
-	#press_list_mod = []
-	# the following forloop removes all *adjacent* duplicates in inter_press_list
-	# might be unnecessary
-#	for i in range (inter_press_list.length):
-#		if i >= inter_press_list.length - 1 or inter_press_list[i] != inter_press_list[i+1]:
-#			press_list_mod.append(inter_press_list[i])
 	order_hits = 0
 	j = 0
 	for i in range(len(press_list_mod)):
@@ -42,9 +35,7 @@ def analyze_trial(given_list, press_list):
 	substitutions = 0	# element in user_list is not in given_list or is excessive
 	additions = 0		# excessive elements in user_list; user_list > given_list
 	trial_data = ({})
-
 	intersection_list = list(set(press_list) & set(given_list))
-	print ("intersection: " + str(intersection_list))
 
 	if press_list != []: 
 		correct = check_correct(given_list, press_list)
@@ -55,12 +46,12 @@ def analyze_trial(given_list, press_list):
 			additions = check_additions(given_list, press_list)
 			substitutions = len(press_list) - hits - additions
 			check_order_error(given_list, press_list)
-
-	print ("correct: " + str(correct))
-	print ("hits: " + str(hits))
-	print ("additions: " + str(additions))
-	print ("substitutions: " + str(substitutions))
-	print ("OE: " + str(order_error))
+	# print ("intersection: " + str(intersection_list))
+	# print ("correct: " + str(correct))
+	# print ("hits: " + str(hits))
+	# print ("additions: " + str(additions))
+	# print ("substitutions: " + str(substitutions))
+	# print ("OE: " + str(order_error))
 
 	trial_data = ({"correct": correct, "hits": hits, "substitutions": substitutions, "additions": additions, "order error": order_error})
 	return trial_data
