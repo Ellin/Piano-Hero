@@ -50,5 +50,5 @@ def analyze_trial(given_list, press_list):
 			substitutions = len(press_list) - hits - additions
 			order_error = check_order_error(given_list, press_list)
 
-	trial_data = ({"correct": correct, "hits": hits, "substitutions": substitutions, "additions": additions, "order error": order_error})
+	trial_data = ({"given balls": given_list, "presses": press_list, "correct": correct, "hits": hits, "substitutions": substitutions, "additions": additions, "order error": order_error})
 	return trial_data
