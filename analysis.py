@@ -41,6 +41,7 @@ def analyze_trial(given_list, press_list):
 	hits = 0				# element in user_list is in given_list and is not excessive
 	substitutions = 0	# element in user_list is not in given_list or is excessive
 	additions = 0		# excessive elements in user_list; user_list > given_list
+	trial_data = ({})
 
 	intersection_list = list(set(press_list) & set(given_list))
 	print ("intersection: " + str(intersection_list))
@@ -54,12 +55,13 @@ def analyze_trial(given_list, press_list):
 			additions = check_additions(given_list, press_list)
 			substitutions = len(press_list) - hits - additions
 			check_order_error(given_list, press_list)
+
 	print ("correct: " + str(correct))
 	print ("hits: " + str(hits))
 	print ("additions: " + str(additions))
 	print ("substitutions: " + str(substitutions))
 	print ("OE: " + str(order_error))
 
-given_list = [4, 1, 2, 3]
-press_list = []
-print (analyze_trial(given_list, press_list))
+	trial_data = ({"correct": correct, "hits": hits, "substitutions": substitutions, "additions": additions, "order error": order_error})
+	return trial_data
+			#within trial:  correct (0,1), # hit, # substitions, # additions, order error (1,0), # balls given (1,2,3,4)
