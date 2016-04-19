@@ -1,9 +1,9 @@
 
 def check_correct(given_list, press_list):
 	if press_list == given_list:
-		correct = True
+		correct = 1		# 0 = False, 1 = True
 	else:
-		correct = False	
+		correct = 0	
 	return correct
 
 def check_additions(given_list, press_list):
@@ -17,7 +17,7 @@ def check_order_error(given_list, press_list):
 	# intersections of press_list & given_list, but unlike set(), keeps duplicate elements & also preserves order
 	given_list_mod = [x for x in given_list if x in press_list]
 	press_list_mod = [x for x in press_list if x in given_list_mod]
-	order_error = False		
+	order_error = 0		# 0 = False, 1 = True
 	order_hits = 0
 	j = 0
 	for i in range(len(press_list_mod)):
@@ -27,13 +27,13 @@ def check_order_error(given_list, press_list):
 				j = j + 1
 
 	if order_hits < len(given_list_mod):
-		order_error = True
+		order_error = 1
 
 	return order_error
 
 def analyze_trial(given_list, press_list):
-	correct = False				
-	order_error = False		
+	correct = 0				
+	order_error = 0		
 	hits = 0				
 	substitutions = 0	
 	additions = 0		
